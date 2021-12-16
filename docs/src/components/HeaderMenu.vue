@@ -6,12 +6,12 @@ div
       q-item(clickable, to="/start/release-notes")
         q-item-section.text-teal(avatar)
           q-icon(:name="mdiClipboardText")
-        q-item-section Release notes
+        q-item-section.text-no-wrap Release notes
 
       q-item(clickable, tag="a", href="https://github.com/quasarframework/quasar/issues", target="_blank", rel="noopener")
         q-item-section.text-purple(avatar)
           q-icon(:name="mdiBugCheck")
-        q-item-section Report a bug
+        q-item-section.text-no-wrap Report a bug
 
       q-item(clickable, tag="a", href="https://github.com/quasarframework/quasar", target="_blank", rel="noopener")
         q-item-section(avatar)
@@ -20,21 +20,16 @@ div
 
       q-separator.q-mb-sm.q-mt-md
 
-      q-item-label(header) Beta Releases
+      q-item-label(header) Older Releases
       q-item(
+        key="v1-link"
         clickable
         tag="a"
-        :href="`https://next.quasar.dev/start/upgrade-guide`"
+        href="https://v1.quasar.dev/"
         target="_blank"
         rel="noopener"
       )
-        q-item-section.text-negative(avatar)
-          q-icon(:name="mdiFire")
-        q-item-section v2 beta docs
-
-      q-separator.q-mb-sm.q-mt-md
-
-      q-item-label(header) Older Releases
+        q-item-section v1 docs
       q-item(
         v-for="version in ['17', '16', '15', '14', '13']"
         :key="version"
@@ -51,19 +46,19 @@ div
       q-item(clickable, tag="a", href="https://awesome.quasar.dev", rel="noopener", target="_blank")
         q-item-section.text-yellow-9(avatar)
           q-icon(:name="mdiFlare")
-        q-item-section Awesome List
+        q-item-section.text-no-wrap Awesome List
 
       q-item(to="/app-extensions/discover")
-        q-item-section.text-primary(avatar)
+        q-item-section.text-brand-primary(avatar)
           q-icon(:name="mdiFilePlus")
-        q-item-section App Extensions
+        q-item-section.text-no-wrap App Extensions
 
       q-item-label.q-mt-md(header) Helpers
 
       q-item(clickable, to="/icongenie")
         q-item-section.text-red(avatar)
           q-icon(:name="mdiStarCircle")
-        q-item-section
+        q-item-section.text-no-wrap
           .row.no-wrap.items-center
             span Icon Genie CLI
             //- q-badge.q-ml-sm new
@@ -71,27 +66,27 @@ div
       q-item(clickable, to="/style/theme-builder")
         q-item-section.text-teal(avatar)
           q-icon(:name="mdiPaletteSwatch")
-        q-item-section Theme Builder
+        q-item-section.text-no-wrap Theme Builder
 
       q-item(clickable, to="/style/dark-mode")
         q-item-section(avatar)
           q-icon(:name="mdiInvertColors")
-        q-item-section Dark Mode
+        q-item-section.text-no-wrap Dark Mode
 
       q-item(clickable, tag="a", href="layout-builder", target="_blank")
-        q-item-section.text-primary(avatar)
+        q-item-section.text-brand-primary(avatar)
           q-icon(:name="mdiViewDashboard")
-        q-item-section Layout Builder
+        q-item-section.text-no-wrap Layout Builder
 
       q-item(clickable, to="/layout/gallery")
         q-item-section.text-grey-8(avatar)
           q-icon(:name="mdiShoppingMusic")
-        q-item-section Layout Gallery
+        q-item-section.text-no-wrap Layout Gallery
 
       q-item(clickable, to="/layout/grid/flex-playground")
         q-item-section.text-orange(avatar)
           q-icon(:name="fasFlask")
-        q-item-section
+        q-item-section.text-no-wrap
           .row.no-wrap.items-center
             span Flex Playground
 
@@ -103,7 +98,7 @@ div
         q-item-section Codepen
 
       q-item(clickable, tag="a", href="https://jsfiddle.quasar.dev", target="_blank", rel="noopener")
-        q-item-section.text-primary(avatar)
+        q-item-section.text-brand-primary(avatar)
           q-icon(:name="fabJsfiddle")
         q-item-section jsFiddle
 
@@ -116,9 +111,9 @@ div
     q-list(dense padding)
 
       q-item(clickable, tag="a", href="https://chat.quasar.dev", rel="noopener", target="_blank")
-        q-item-section.text-primary(avatar)
+        q-item-section.text-brand-primary(avatar)
           q-icon(:name="mdiChat")
-        q-item-section Discord Chat
+        q-item-section.text-no-wrap Discord Chat
 
       q-item(clickable, tag="a", href="https://forum.quasar.dev/", rel="noopener", target="_blank")
         q-item-section.text-secondary(avatar)
@@ -128,16 +123,16 @@ div
       q-item(clickable, tag="a", href="https://github.com/quasarframework", rel="noopener", target="_blank")
         q-item-section(avatar)
           q-icon(:name="fabGithub")
-        q-item-section Github Repositories
+        q-item-section.text-no-wrap GitHub Repositories
 
       q-item-label.q-mt-md(header) Social
 
       q-item(clickable, tag="a", href="https://blog.quasar.dev", rel="noopener", target="_blank")
-        q-item-section.text-primary(avatar)
-          q-icon(:name="mdiBlogger")
+        q-item-section.text-brand-primary(avatar)
+          q-icon(:name="mdiPost")
         q-item-section Blog
 
-      q-item(clickable, tag="a", href="https://forum.quasar.dev/category/1/announcements", target="_blank", rel="noopener")
+      q-item(clickable, tag="a", href="https://github.com/quasarframework/quasar/discussions/categories/announcements", target="_blank", rel="noopener")
         q-item-section.text-purple(avatar)
           q-icon(:name="mdiBullhorn")
         q-item-section Announcements
@@ -148,7 +143,7 @@ div
         q-item-section Twitter
 
       q-item(clickable, tag="a", href="https://facebook.quasar.dev", target="_blank", rel="noopener")
-        q-item-section.text-primary(avatar)
+        q-item-section.text-blue-8(avatar)
           q-icon(:name="fabFacebook")
         q-item-section
           .row.no-wrap.items-center
@@ -159,7 +154,7 @@ div
       q-item(clickable, tag="a", href="https://donate.quasar.dev", target="_blank", rel="noopener")
         q-item-section(avatar)
           q-icon(:name="mdiCharity")
-        q-item-section Github Sponsorship
+        q-item-section.text-no-wrap GitHub Sponsorship
 </template>
 
 <script>
@@ -169,11 +164,11 @@ import {
 } from '@quasar/extras/fontawesome-v5'
 
 import {
-  mdiBlogger, mdiForum, mdiChat, mdiBullhorn,
+  mdiPost, mdiForum, mdiChat, mdiBullhorn,
   mdiViewDashboard, mdiShoppingMusic, mdiClipboardText,
   mdiBugCheck, mdiFlare, mdiFilePlus, mdiPaletteSwatch,
-  mdiInvertColors, mdiCharity, mdiStarCircle, mdiFire
-} from '@quasar/extras/mdi-v5'
+  mdiInvertColors, mdiCharity, mdiStarCircle
+} from '@quasar/extras/mdi-v6'
 
 export default {
   name: 'HeaderMenu',
@@ -182,30 +177,31 @@ export default {
     align: String
   },
 
-  created () {
-    this.fabGithub = fabGithub
-    this.fasFlask = fasFlask
-    this.fabCodepen = fabCodepen
-    this.fabJsfiddle = fabJsfiddle
-    this.fasCubes = fasCubes
-    this.fabTwitter = fabTwitter
-    this.fabFacebook = fabFacebook
+  setup () {
+    return {
+      fabGithub,
+      fasFlask,
+      fabCodepen,
+      fabJsfiddle,
+      fasCubes,
+      fabTwitter,
+      fabFacebook,
 
-    this.mdiBlogger = mdiBlogger
-    this.mdiChat = mdiChat
-    this.mdiForum = mdiForum
-    this.mdiBullhorn = mdiBullhorn
-    this.mdiViewDashboard = mdiViewDashboard
-    this.mdiShoppingMusic = mdiShoppingMusic
-    this.mdiClipboardText = mdiClipboardText
-    this.mdiBugCheck = mdiBugCheck
-    this.mdiFlare = mdiFlare
-    this.mdiFilePlus = mdiFilePlus
-    this.mdiPaletteSwatch = mdiPaletteSwatch
-    this.mdiInvertColors = mdiInvertColors
-    this.mdiCharity = mdiCharity
-    this.mdiStarCircle = mdiStarCircle
-    this.mdiFire = mdiFire
+      mdiPost,
+      mdiChat,
+      mdiForum,
+      mdiBullhorn,
+      mdiViewDashboard,
+      mdiShoppingMusic,
+      mdiClipboardText,
+      mdiBugCheck,
+      mdiFlare,
+      mdiFilePlus,
+      mdiPaletteSwatch,
+      mdiInvertColors,
+      mdiCharity,
+      mdiStarCircle
+    }
   }
 }
 </script>

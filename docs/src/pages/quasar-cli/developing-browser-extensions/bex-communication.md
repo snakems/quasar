@@ -30,7 +30,7 @@ Once you get your head around this concept, there are no limits to how the BEX c
 
 The bridge is a promise based event system which is shared between all parts of the BEX and as such allows you to listen for events in your Quasar App, emit them from other parts or vice versa. This is what gives Quasar BEX mode it's power.
 
-To access the bridge from within your Quasar App you can use `this.$q.bex`. In other areas, the bridge is made available via the `bridge` parameter in the respective hook files.
+To access the bridge from within your Quasar App you can use `$q.bex`. In other areas, the bridge is made available via the `bridge` parameter in the respective hook files.
 
 Let's see how it works.
 
@@ -61,11 +61,10 @@ Wait, what's `bridge.send(event.eventResponseKey)`?
 
 The Quasar bridge does some work behind the scenes to convert the normal event based communication into promises and as such, in order for the promise to resolve, we need to send a *new* event which is captured and promisified.
 
-:::warning
+::: warning
 If you omit `bridge.send(event.eventResponseKey)` the promise on `.send()` will not resolve.
 :::
 
-:::tip
+::: tip
 The bridge also does some work to split large data which is too big to be transmitted in one go due to the browser extension 60mb data transfer limit. In order for this to happen, the payload must be an array.
 :::
-

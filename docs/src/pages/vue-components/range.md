@@ -1,6 +1,7 @@
 ---
 title: Range
 desc: The QRange Vue component offers a way for the user to select from a sub-range of values between a maximum and maximum value, with optional steps.
+keys: QRange
 related:
   - /vue-components/slider
   - /vue-components/field
@@ -9,8 +10,9 @@ The QRange component is a great way to offer the user the selection of a sub-ran
 
 Also check out its “sibling”, the [QSlider](/vue-components/slider) component.
 
-## Installation
-<doc-installation components="QRange" />
+## QRange API
+
+<doc-api file="QRange" />
 
 ## Usage
 
@@ -23,6 +25,12 @@ Notice we are using an object for the selection, which holds values for both the
 ### Vertical
 
 <doc-example title="Vertical orientation" file="QRange/Vertical" />
+
+### With inner min/max <q-badge align="top" color="brand-primary" label="v2.4+" />
+
+Sometimes you need to restrict the model value to an interval inside of the track's length. For this purpose, use `inner-min` and `inner-max` props. First prop needs to be higher or equal to `min` prop while the latter needs to be lower or equal to the `max` prop.
+
+<doc-example title="Inner min/max" file="QRange/InnerMinMax" />
 
 ### With step
 
@@ -70,7 +78,7 @@ Use the `drag-range` or `drag-only-range` props to allow the user to move the se
 
 <doc-example title="Null values" file="QRange/Null" />
 
-### Reverse <q-badge align="top" label="v1.5+" />
+### Reverse
 
 <doc-example title="In reverse" file="QRange/Reverse" />
 
@@ -92,11 +100,8 @@ Using simple CSS you can get nice effects.
 
 <doc-example title="Getting creative" file="QRange/GettingCreative" />
 
-### Native form submit <q-badge align="top" label="v1.9+" />
+### Native form submit
 
 When dealing with a native form which has an `action` and a `method` (eg. when using Quasar with ASP.NET controllers), you need to specify the `name` property on QRange, otherwise formData will not contain it (if it should):
 
 <doc-example title="Native form" file="QRange/NativeForm" />
-
-## QRange API
-<doc-api file="QRange" />

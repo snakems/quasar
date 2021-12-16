@@ -7,7 +7,7 @@ export default [
         role: 'Creator, Lead Dev & Architect',
         avatar: 'razvan_stoenescu.jpeg',
         email: 'razvan@quasar.dev',
-        twitter: 'quasarframework',
+        twitter: 'rstoenescu1',
         github: 'rstoenescu',
         desc: 'Architecture and development of Quasar on all fronts'
       },
@@ -69,6 +69,14 @@ export default [
         avatar: 'luke_diebold.png',
         github: 'ldiebold',
         desc: 'Creates video tutorials, podcasts and shows for Quasar Framework.'
+      },
+
+      {
+        name: 'Niccolò Menozzi',
+        role: 'Senior designer',
+        avatar: 'niccolo_menozzi.jpg',
+        github: 'NiccoloMenozzi',
+        desc: 'UX manager, brand management, communication, business strategy.'
       }
     ]
   },

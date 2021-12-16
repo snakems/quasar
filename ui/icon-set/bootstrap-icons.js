@@ -3,8 +3,8 @@
 
 import {
   mdiFormatSubscript,
-  mdiFormatSuperscript
-} from '@quasar/extras/mdi-v5'
+  mdiFormatSuperscript,
+} from '@quasar/extras/mdi-v6'
 
 export default {
   name: 'bootstrap-icons',

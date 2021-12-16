@@ -61,6 +61,7 @@ $ quasar [command name] --help
 Creates an App folder with initial project boilerplate.
 
 ```bash
+## Quasar UI v2
 $ quasar create <folder_name>
 ```
 
@@ -77,11 +78,11 @@ You can use a starter kit stored into any publicly accessible Git repository by 
 
 `master` branch will be checked out by default, but you can specify the one you prefer via `--branch <branch name>` (eg. `quasar create --kit owner/name --branch my-branch`).
 
-:::warning
+::: warning
 The preferred way to build reusable code and UI Components into Quasar ecosystem are App Extensions. Use a custom starter kit only if you really know what you're doing and be aware that it will make more difficult for the Quasar team to provide you assistance.
 :::
 
-## Upgrade <q-badge align="top" label="@quasar/cli v1.1+ specs" />
+## Upgrade
 
 Check (and optionally) upgrade Quasar packages from a Quasar project folder:
 
@@ -141,6 +142,9 @@ $ quasar dev -h
     # underlying "cordova" or "electron" executables:
     $ quasar dev -m ios -- some params --and options --here
     $ quasar dev -m electron -- --no-sandbox --disable-setuid-sandbox
+    # when on Windows and using Powershell:
+    $ quasar dev -m ios '--' some params --and options --here
+    $ quasar dev -m electron '--' --no-sandbox --disable-setuid-sandbox
 
   Options
     --mode, -m       App mode [spa|ssr|pwa|bex|cordova|capacitor|electron] (default: spa)
@@ -198,6 +202,9 @@ $ quasar dev -m electron
 # underlying "cordova" or "electron" executables:
 $ quasar dev -m ios -- some params --and options --here
 $ quasar dev -m electron -- --no-sandbox --disable-setuid-sandbox
+# when on Windows and using Powershell:
+$ quasar dev -m ios '--' some params --and options --here
+$ quasar dev -m electron '--' --no-sandbox --disable-setuid-sandbox
 ```
 
 If you wish to change the hostname or port serving your App you have 3 options:
@@ -250,6 +257,8 @@ $ quasar build -h
     # passing extra parameters and/or options to
     # underlying "cordova" executable:
     $ quasar build -m ios -- some params --and options --here
+    # when on Windows and using Powershell:
+    $ quasar build -m ios '--' some params --and options --here
 
   Options
     --mode, -m      App mode [spa|ssr|pwa|bex|cordova|capacitor|electron] (default: spa)
@@ -318,6 +327,8 @@ $ quasar build -m electron
 # passing extra parameters and/or options to
 # underlying "cordova" executable:
 $ quasar build -m ios -- some params --and options --here
+# when on Windows and using Powershell:
+$ quasar build -m ios '--' some params --and options --here
 
 # Create a production build with ability to debug it
 # (has source-maps and code is NOT minified)
@@ -374,8 +385,8 @@ $ quasar new -h
     --format -f <option>  (optional) Use a supported format for the template
                           Option can be:
                              * ts-options - TS options API
-                             * ts-composition - TS component API
-                             * ts-class - TS class style syntax
+                             * ts-composition - TS composition API
+                             * ts-class - [DEPRECATED] TS class style syntax
                              * ts - use for TS boot file and store modules only
 ```
 

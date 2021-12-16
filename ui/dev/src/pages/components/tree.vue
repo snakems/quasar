@@ -15,6 +15,7 @@
           <div class="col-xs-12 col-md-4">
             <q-toggle v-model="accordion" label="Accordion mode" />
             <q-toggle v-model="dark" label="On dark background" :false-value="null" />
+            <q-toggle v-model="dense" label="Dense" />
             <q-toggle v-model="selectableNodes" label="Selectable nodes" />
             <q-toggle v-model="noConnectors" label="No connectors" />
           </div>
@@ -28,7 +29,7 @@
             <span class="text-bold">Expanded</span>:<br>{{ expanded }}
           </div>
           <div v-if="selectableNodes" class="col-xs-12 col-md-6" style="min-height: 60px">
-            <span class="text-bold">Selected</span>:<br>{{ selected }}
+            <span class="text-bold">Selected</span>:<br>{{ selected || 'null' }}
           </div>
           <div class="col-xs-12 col-md-6">
             <q-btn @click="getNodeByKey" no-caps label="getNodeByKey test" />
@@ -43,11 +44,12 @@
           :nodes="nodes"
           node-key="key"
           children-key="subnodes"
-          :selected.sync="selected"
+          v-model:selected="selected"
           :tick-strategy="tickStrategy"
-          :ticked.sync="ticked"
-          :expanded.sync="expanded"
+          v-model:ticked="ticked"
+          v-model:expanded="expanded"
           :dark="dark"
+          :dense="dense"
           :accordion="accordion"
           :color="color"
           :filter="filter"
@@ -83,6 +85,10 @@
           </template>
 
           <template v-slot:body-2-1-2-1="prop">
+            Content for: {{ prop.key }}
+          </template>
+
+          <template v-slot:body-2-1-2-2-1="prop">
             Content for: {{ prop.key }}
           </template>
         </q-tree>
@@ -143,10 +149,92 @@ export default {
       ],
       selectableNodes: true,
       dark: null,
+      dense: false,
       accordion: false,
       filter: '',
       defaultExpandAll: false,
       nodes: [
+        {
+          key: 'KEY: Node 01',
+          label: 'Node 01',
+          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png'
+        },
+        {
+          key: 'KEY: Node 02',
+          label: 'Node 02',
+          icon: 'alarm',
+          iconColor: 'red'
+        },
+        {
+          key: 'KEY: Node 03',
+          label: 'Node 03'
+        },
+        {
+          key: 'KEY: Node 04',
+          label: 'Node 04',
+          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+          subnodes: [
+            {
+              key: 'KEY: Node 04.01',
+              label: 'Node 04.01',
+              avatar: 'https://cdn.quasar.dev/img/boy-avatar.png'
+            },
+            {
+              key: 'KEY: Node 04.02',
+              label: 'Node 04.02',
+              icon: 'alarm',
+              iconColor: 'red'
+            },
+            {
+              key: 'KEY: Node 04.03',
+              label: 'Node 04.03'
+            }
+          ]
+        },
+        {
+          key: 'KEY: Node 05',
+          label: 'Node 05',
+          icon: 'alarm',
+          iconColor: 'red',
+          subnodes: [
+            {
+              key: 'KEY: Node 05.01',
+              label: 'Node 05.01',
+              avatar: 'https://cdn.quasar.dev/img/boy-avatar.png'
+            },
+            {
+              key: 'KEY: Node 05.02',
+              label: 'Node 05.02',
+              icon: 'alarm',
+              iconColor: 'red'
+            },
+            {
+              key: 'KEY: Node 05.03',
+              label: 'Node 05.03'
+            }
+          ]
+        },
+        {
+          key: 'KEY: Node 06',
+          label: 'Node 06',
+          subnodes: [
+            {
+              key: 'KEY: Node 06.01',
+              label: 'Node 06.01',
+              avatar: 'https://cdn.quasar.dev/img/boy-avatar.png'
+            },
+            {
+              key: 'KEY: Node 06.02',
+              label: 'Node 06.02',
+              icon: 'alarm',
+              iconColor: 'red'
+            },
+            {
+              key: 'KEY: Node 06.03',
+              label: 'Node 06.03'
+            }
+          ]
+        },
         {
           key: 'KEY: Node 1 - filter',
           label: 'Node 1 - filter',
@@ -261,6 +349,7 @@ export default {
                       subnodes: [
                         {
                           key: 'KEY: Node 2.1.2.2.1',
+                          body: '2-1-2-2-1',
                           label: 'Node 2.1.2.2.1'
                         },
                         {
@@ -476,14 +565,15 @@ export default {
         const label = node.label.replace(' - Lazy load', '')
 
         done([
-          { label: `${label}.1` },
-          { label: `${label}.2` },
-          { label: `${label}.3`, lazy: true },
+          { label: `${ label }.1`, key: `${ label }.1` },
+          { label: `${ label }.2`, key: `${ label }.2` },
+          { label: `${ label }.3`, key: `${ label }.3`, lazy: true },
           {
-            label: `${label}.4`,
+            label: `${ label }.4`,
+            key: `${ label }.4`,
             subnodes: [
-              { label: `${label}.4.1`, lazy: true },
-              { label: `${label}.4.2`, lazy: true }
+              { label: `${ label }.4.1`, key: `${ label }.4.1`, lazy: true },
+              { label: `${ label }.4.2`, key: `${ label }.4.2`, lazy: true }
             ]
           }
         ])

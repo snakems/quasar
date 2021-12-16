@@ -1,6 +1,7 @@
 ---
 title: Slider
 desc: The QSlider Vue component is a great way for the user to specify a number value between a minimum and maximum value, with optional steps between valid values.
+keys: QSlider
 related:
   - /vue-components/range
   - /vue-components/field
@@ -9,8 +10,9 @@ The QSlider is a great way for the user to specify a number value between a mini
 
 Also check its “sibling”, the [QRange](/vue-components/range) component.
 
-## Installation
-<doc-installation components="QSlider" />
+## QSlider API
+
+<doc-api file="QSlider" />
 
 ## Usage
 
@@ -21,6 +23,12 @@ Also check its “sibling”, the [QRange](/vue-components/range) component.
 ### Vertical
 
 <doc-example title="Vertical orientation" file="QSlider/Vertical" />
+
+### With inner min/max <q-badge align="top" color="brand-primary" label="v2.4+" />
+
+Sometimes you need to restrict the model value to an interval inside of the track's length. For this purpose, use `inner-min` and `inner-max` props. First prop needs to be higher or equal to `min` prop while the latter needs to be lower or equal to the `max` prop.
+
+<doc-example title="Inner min/max" file="QSlider/InnerMinMax" />
 
 ### With step
 
@@ -58,7 +66,7 @@ The example below is better highlighting how QSlider handles label positioning s
 
 <doc-example title="Null value" file="QSlider/Null" />
 
-### Reverse <q-badge align="top" label="v1.5+" />
+### Reverse
 
 <doc-example title="In reverse" file="QSlider/Reverse" />
 
@@ -74,11 +82,8 @@ The example below is better highlighting how QSlider handles label positioning s
 
 <doc-example title="With QItem" file="QSlider/List" />
 
-### Native form submit <q-badge align="top" label="v1.9+" />
+### Native form submit
 
 When dealing with a native form which has an `action` and a `method` (eg. when using Quasar with ASP.NET controllers), you need to specify the `name` property on QSlider, otherwise formData will not contain it (if it should):
 
 <doc-example title="Native form" file="QSlider/NativeForm" />
-
-## QSlider API
-<doc-api file="QSlider" />

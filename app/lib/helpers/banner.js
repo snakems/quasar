@@ -3,7 +3,7 @@ const { green, grey, underline } = require('chalk')
 const { getBrowsersBanner } = require('./browsers-support')
 const getPackageJson = require('./get-package-json')
 const quasarVersion = getPackageJson('quasar').version
-const cliAppVersion = getPackageJson('@quasar/app').version
+const cliAppVersion = require('../../package.json').version
 
 function getPackager (argv, cmd) {
   if (argv.ide || (argv.mode === 'capacitor' && cmd === 'dev')) {
@@ -30,6 +30,7 @@ module.exports = function (argv, cmd, details) {
  ${cmd === 'dev' ? 'Dev mode..........' : 'Build mode........'} ${green(argv.mode)}
  Pkg quasar........ ${green('v' + quasarVersion)}
  Pkg @quasar/app... ${green('v' + cliAppVersion)}
+ Pkg webpack....... ${green('v5')}
  Debugging......... ${cmd === 'dev' || argv.debug ? green('enabled') : grey('no')}`
 
   if (cmd === 'build') {
@@ -109,12 +110,5 @@ module.exports = function (argv, cmd, details) {
   }
 }
 
-module.exports.devCompilationSuccess = function (ctx, url, appDir, transpileBanner) {
-  return `App dir........... ${green(appDir)}
-    App URL........... ${green(url)}
-    Dev mode.......... ${green(ctx.modeName + (ctx.mode.ssr && ctx.mode.pwa ? ' + pwa' : ''))}
-    Pkg quasar........ ${green('v' + quasarVersion)}
-    Pkg @quasar/app... ${green('v' + cliAppVersion)}
-    Transpiled JS..... ${transpileBanner}
-  `
-}
+module.exports.quasarVersion = quasarVersion
+module.exports.cliAppVersion = cliAppVersion

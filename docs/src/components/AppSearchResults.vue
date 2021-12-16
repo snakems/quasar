@@ -36,7 +36,8 @@
 </template>
 
 <script>
-import { mdiArrowUpBold, mdiArrowDownBold, mdiKeyboardReturn, mdiKeyboardEsc } from '@quasar/extras/mdi-v5'
+import { computed } from 'vue'
+import { mdiArrowUpBold, mdiArrowDownBold, mdiKeyboardReturn, mdiKeyboardEsc } from '@quasar/extras/mdi-v6'
 
 import ResultPageContent from 'components/search-results/ResultPageContent'
 import ResultPageLink from 'components/search-results/ResultPageLink'
@@ -54,22 +55,24 @@ export default {
     ResultPageLink
   },
 
-  created () {
-    this.up = mdiArrowUpBold
-    this.down = mdiArrowDownBold
-    this.select = mdiKeyboardReturn
-    this.close = mdiKeyboardEsc
-  },
-
   props: {
     results: Object,
     searchHasFocus: Boolean,
     searchActiveId: String
   },
 
-  computed: {
-    instructionsClass () {
-      return `app-search__instructions--${this.searchHasFocus === true ? 'visible' : 'hidden'}`
+  setup (props) {
+    const instructionsClass = computed(() =>
+      `app-search__instructions--${props.searchHasFocus === true ? 'visible' : 'hidden'}`
+    )
+
+    return {
+      instructionsClass,
+
+      up: mdiArrowUpBold,
+      down: mdiArrowDownBold,
+      select: mdiKeyboardReturn,
+      close: mdiKeyboardEsc
     }
   }
 }
@@ -99,13 +102,13 @@ export default {
   &__section-title
     padding: 4px 0 4px 16px
     font-weight: 500
-    color: $primary
+    color: $brand-primary
 
   &__result
     margin: 4px 16px 4px 0
     padding: 8px 8px 8px 16px
     border: 1px solid rgba(0, 0, 0, 0.12)
-    border-right: 4px solid $primary
+    border-right: 4px solid $brand-primary
     border-radius: 0 4px 4px 0
     position: relative
     cursor: pointer
@@ -118,7 +121,7 @@ export default {
         width: 1.2em
         height: 1.2em
         background: #fff
-        color: $primary
+        color: $brand-primary
         border-radius: 4px
 
     &-overlay
@@ -138,7 +141,7 @@ export default {
       color: #000
 
   &__result.q-item--active
-    background: $primary
+    background: $brand-primary
     color: #fff
 
     .app-search__result-overlay

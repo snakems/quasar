@@ -1,9 +1,7 @@
 {
   "meta": {
-    "docsUrl": "https://v1.quasar.dev/vue-directives/mutation"
+    "docsUrl": "https://v2.quasar.dev/vue-directives/mutation"
   },
-
-  "addedIn": "v1.3.0",
 
   "value": {
     "type": [ "Function" ],
@@ -29,9 +27,8 @@
           },
 
           "target": {
-            "type": "Object",
-            "desc": "The DOM element that the mutation affected, depending on the mutation type",
-            "__exemption": [ "examples" ]
+            "type": "Element",
+            "desc": "The DOM element that the mutation affected, depending on the mutation type"
           },
 
           "addedNodes": {

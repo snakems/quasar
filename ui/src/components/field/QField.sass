@@ -78,8 +78,7 @@ $field-transition-label-right-up: .324s cubic-bezier(.4,0,.2,1)
     height: inherit
 
   &__control
-    color: $primary
-    color: var(--q-color-primary)
+    color: var(--q-primary)
     height: 56px
     max-width: 100%
     outline: none
@@ -180,8 +179,8 @@ $field-transition-label-right-up: .324s cubic-bezier(.4,0,.2,1)
 
   &__label
     left: 0
-    right: 0
     top: 18px
+    max-width: 100%
     color: $input-label-color
     font-size: 16px
     line-height: 20px
@@ -190,12 +189,12 @@ $field-transition-label-right-up: .324s cubic-bezier(.4,0,.2,1)
     text-decoration: inherit
     text-transform: inherit
     transform-origin: left top
-    transition: transform $field-transition, right $field-transition-label-right-up
+    transition: transform $field-transition, max-width $field-transition-label-right-up
 
   &--float .q-field__label
+    max-width: 133%
     transform: translateY(-40%) scale(.75)
-    right: calc(-100% / 3)
-    transition: transform $field-transition, right $field-transition-label-right-down
+    transition: transform $field-transition, max-width $field-transition-label-right-down
 
   &--highlighted
     .q-field__label
@@ -451,8 +450,7 @@ $field-transition-label-right-up: .324s cubic-bezier(.4,0,.2,1)
       animation: q-field-label .36s
 
     .q-field__bottom
-      color: $negative
-      color: var(--q-color-negative)
+      color: var(--q-negative)
 
   &__focusable-action
     opacity: 0.6
@@ -514,11 +512,11 @@ $field-transition-label-right-up: .324s cubic-bezier(.4,0,.2,1)
   &-leave-active
     transition: transform .6s cubic-bezier(.86,0,.07,1), opacity .6s cubic-bezier(.86,0,.07,1)
 
-  &-enter, &-leave-to
+  &-enter-from, &-leave-to
     opacity: 0
     transform: translateY(-10px)
 
-  &-leave, &-leave-active
+  &-leave-from, &-leave-active
     position: absolute
 
 @keyframes q-field-label

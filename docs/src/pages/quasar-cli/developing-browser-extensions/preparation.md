@@ -5,10 +5,6 @@ desc: How to add the Browser Extension (BEX) mode into a Quasar app.
 
 The difference between building a SPA, Mobile App, Electron App, BEX or SSR is simply determined by the "mode" parameter in "quasar dev" and "quasar build" commands.
 
-::: tip
-You will need `@quasar/app` v1.7+ in order to run BEX mode.
-:::
-
 ## 1. Add Quasar BEX Mode
 In order to build a BEX, we first need to add the BEX mode to our Quasar project:
 
@@ -24,7 +20,7 @@ $ quasar dev -m bex
 
 This will add BEX mode automatically, if it is missing adding a `src-bex` folder to your project.
 
-:::tip
+::: tip
 The `src-bex` folder is just a standard browser extension folder so you are free to use it as you would any other browser extension project folder. Please refer to supported Browser Extension documentation to learn more.
 
 * [Mozilla FireFox Browser Extension Documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)

@@ -3,6 +3,11 @@ const fse = require('fs')
 const archiver = require('archiver')
 const mkdirp = require('mkdirp')
 
+function findAndReplaceInSection (sectionArray, find, replace) {
+  const index = sectionArray.indexOf(find)
+  sectionArray[index] = replace
+}
+
 class BexPackager {
   constructor (options) {
     this.options = options
@@ -11,11 +16,13 @@ class BexPackager {
   }
 
   apply (compiler) {
-    compiler.hooks.done.tap('done-compiling', () => {
-      this.setupDirectories()
-      this.fixManifest()
-      this.bundleChrome()
-      this.bundleFirefox()
+    compiler.hooks.done.tap('done-compiling', stats => {
+      if (stats.hasErrors() === false) {
+        this.setupDirectories()
+        this.fixManifest()
+        this.bundleChrome()
+        this.bundleFirefox()
+      }
     })
   }
 
@@ -24,14 +31,9 @@ class BexPackager {
    */
   fixManifest () {
     const manifestFilePath = path.join(this.options.src, 'manifest.json')
-    if (fse.existsSync(manifestFilePath)) {
+    if (fse.existsSync(manifestFilePath) === true) {
       const manifestFileData = fse.readFileSync(manifestFilePath)
       let manifestData = JSON.parse(manifestFileData.toString())
-
-      const findAndReplaceInSection = (sectionArray, find, replace) => {
-        const index = sectionArray.indexOf(find)
-        sectionArray[index] = replace
-      }
 
       findAndReplaceInSection(manifestData.background.scripts, 'www/bex-background.js', 'www/js/bex-background.js')
       findAndReplaceInSection(manifestData.content_scripts[0].js, 'www/bex-content-script.js', 'www/js/bex-content-script.js')

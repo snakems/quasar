@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import { mdiAlert } from '@quasar/extras/mdi-v5'
+import { mdiAlert } from '@quasar/extras/mdi-v6'
 
 export default {
   name: 'ResultError',
-  created () {
-    this.mdiAlert = mdiAlert
+  setup () {
+    return { mdiAlert }
   }
 }
 </script>

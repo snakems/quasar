@@ -1,6 +1,6 @@
 {
   "meta": {
-    "docsUrl": "https://v1.quasar.dev/vue-components/tree"
+    "docsUrl": "https://v2.quasar.dev/vue-components/tree"
   },
 
   "props": {
@@ -33,15 +33,13 @@
       "desc": "The property name of each node object that holds the list of children of the node",
       "default": "children",
       "examples": [ "roles", "relatives" ],
-      "category": "content",
-      "addedIn":"v1.11.3"
+      "category": "content"
     },
 
     "no-connectors": {
       "type": "Boolean",
       "desc": "Do not display the connector lines between nodes",
-      "category": "style",
-      "addedIn": "v1.5.10"
+      "category": "style"
     },
 
     "color": {
@@ -61,6 +59,11 @@
     "selected-color": {
       "extends": "color",
       "desc": "Color name for selected nodes (from the Quasar Color Palette)"
+    },
+
+    "dense": {
+      "extends": "dense",
+      "addedIn": "v2.2.4"
     },
 
     "dark": {
@@ -83,7 +86,7 @@
       "type": "Array",
       "desc": "Keys of nodes that are ticked",
       "sync": true,
-      "examples": [ ":ticked.sync=\"tickedKeys\"" ],
+      "examples": [ "v-model:ticked=\"tickedKeys\"" ],
       "category": "state"
     },
 
@@ -91,7 +94,7 @@
       "type": "Array",
       "desc": "Keys of nodes that are expanded",
       "sync": true,
-      "examples": [ ":expanded.sync=\"expandedKeys\"" ],
+      "examples": [ "v-model:expanded=\"expandedKeys\"" ],
       "category": "state"
     },
 
@@ -99,7 +102,7 @@
       "type": "Any",
       "desc": "Key of node currently selected",
       "sync": true,
-      "examples": [ ":selected.sync=\"selectedKey\"" ],
+      "examples": [ "v-model:selected=\"selectedKey\"" ],
       "category": "state"
     },
 
@@ -168,7 +171,7 @@
     }
   },
 
-  "scopedSlots": {
+  "slots": {
     "default-header": {
       "desc": "Slot to use for defining the header of a node",
       "scope": {
@@ -183,9 +186,9 @@
           "reactive": true
         },
         "tree": {
-          "type": "Object",
-          "desc": "QTree instance",
-          "__exemption": [ "examples" ]
+          "type": "Component",
+          "tsType": "QTree",
+          "desc": "QTree instance"
         },
         "node": {
           "type": "Object",
@@ -223,9 +226,9 @@
           "reactive": true
         },
         "tree": {
-          "type": "Object",
-          "desc": "QTree instance",
-          "__exemption": [ "examples" ]
+          "type": "Component",
+          "tsType": "QTree",
+          "desc": "QTree instance"
         },
         "node": {
           "type": "Object",
@@ -263,9 +266,9 @@
           "reactive": true
         },
         "tree": {
-          "type": "Object",
-          "desc": "QTree instance",
-          "__exemption": [ "examples" ]
+          "type": "Component",
+          "tsType": "QTree",
+          "desc": "QTree instance"
         },
         "node": {
           "type": "Object",
@@ -303,9 +306,9 @@
           "reactive": true
         },
         "tree": {
-          "type": "Object",
-          "desc": "QTree instance",
-          "__exemption": [ "examples" ]
+          "type": "Component",
+          "tsType": "QTree",
+          "desc": "QTree instance"
         },
         "node": {
           "type": "Object",
@@ -332,7 +335,7 @@
 
   "events": {
     "update:expanded": {
-      "desc": "Triggered when nodes are expanded or collapsed; Used by Vue on 'update' synched prop",
+      "desc": "Triggered when nodes are expanded or collapsed; Used by Vue on 'v-model:update' to update its value",
       "params": {
         "expanded": {
           "type": "Array",
@@ -351,21 +354,25 @@
           "definition": {
             "node": {
               "type": "Object",
+              "required": true,
               "desc": "The node to which the new nodes (the children) will be appended",
               "__exemption": [ "examples" ]
             },
             "key": {
               "type": "String",
+              "required": true,
               "desc": "The key of the node getting the newly loaded child nodes",
               "examples": [ "New Node" ]
             },
             "done": {
               "type": "Function",
+              "required": true,
               "desc": "The callback to be carried out when the loading is successful",
               "params": {
                 "children": {
                   "type": "Array",
                   "desc": "Array of nodes",
+                  "default": "[]",
                   "__exemption": [ "examples" ]
                 }
               },
@@ -373,6 +380,7 @@
             },
             "fail": {
               "type": "Function",
+              "required": true,
               "desc": "The callback to be carried out should the loading fails",
               "params": null,
               "returns": null
@@ -383,7 +391,7 @@
     },
 
     "update:ticked": {
-      "desc": "Emitted when nodes are ticked/unticked via the checkbox; Used by Vue on 'ticked' synched prop",
+      "desc": "Emitted when nodes are ticked/unticked via the checkbox; Used by Vue on 'v-model:ticked' to update its value",
       "params": {
         "target": {
           "type": "Array",
@@ -394,7 +402,7 @@
     },
 
     "update:selected": {
-      "desc": "Emitted when selected node changes; Used by Vue on 'selected' synched prop",
+      "desc": "Emitted when selected node changes; Used by Vue on 'v-model:selected' to update its value",
       "params": {
         "target": {
           "type": "Any",
@@ -405,13 +413,11 @@
     },
 
     "after-show": {
-      "extends": "after-show",
-      "addedIn": "v1.9.0"
+      "extends": "after-show"
     },
 
     "after-hide": {
-      "extends": "after-hide",
-      "addedIn": "v1.9.0"
+      "extends": "after-hide"
     }
   },
 
@@ -421,8 +427,8 @@
       "params": {
         "key": {
           "type": "Any",
-          "desc": "The key of a node",
           "required": true,
+          "desc": "The key of a node",
           "examples": [ "Node 1" ]
         }
       },
@@ -456,8 +462,8 @@
       "params": {
         "key": {
           "type": "Any",
-          "desc": "The key of a node",
           "required": true,
+          "desc": "The key of a node",
           "examples": [ "Node 1" ]
         }
       },
@@ -480,14 +486,14 @@
       "params": {
         "key": {
           "type": "Any",
-          "desc": "The key of a node",
           "required": true,
+          "desc": "The key of a node",
           "examples": [ "Node 1" ]
         },
         "state": {
           "type": "Boolean",
-          "desc": "Set to 'true' to expand the branch of the tree, otherwise 'false' collapses it",
-          "required": true
+          "required": true,
+          "desc": "Set to 'true' to expand the branch of the tree, otherwise 'false' collapses it"
         }
       }
     },
@@ -497,8 +503,8 @@
       "params": {
         "key": {
           "type": "Any",
-          "desc": "The key of a node",
           "required": true,
+          "desc": "The key of a node",
           "examples": [ "Node 1" ]
         }
       },
@@ -513,14 +519,14 @@
       "params": {
         "keys": {
           "type": "Array",
-          "desc": "The keys of nodes to tick/untick",
           "required": true,
+          "desc": "The keys of nodes to tick/untick",
           "examples": [ "[ 'Node 1', 'Node 2' ]" ]
         },
         "state": {
           "type": "Boolean",
-          "desc": "Set to 'true' to tick the checkbox of nodes, otherwise 'false' unticks them",
-          "required": true
+          "required": true,
+          "desc": "Set to 'true' to tick the checkbox of nodes, otherwise 'false' unticks them"
         }
       }
     }
